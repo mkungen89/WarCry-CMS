@@ -1,0 +1,17 @@
+# Environment - never commit secrets
+.env
+
+# PHP cache
+cache/*
+!cache/.gitkeep
+
+# User uploads
+uploads/*
+!uploads/.gitkeep
+
+# OS/editor clutter
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

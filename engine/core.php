@@ -1,5 +1,24 @@
 <?php
 
+// Load .env file if it exists (no Composer needed)
+(static function () {
+    $envFile = dirname(__DIR__) . '/.env';
+    if (!file_exists($envFile)) return;
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (str_starts_with(trim($line), '#') || strpos($line, '=') === false) continue;
+        [$key, $val] = explode('=', $line, 2);
+        $key = trim($key);
+        $val = trim($val);
+        if (strlen($val) > 1 && $val[0] === $val[-1] && ($val[0] === '"' || $val[0] === "'")) {
+            $val = substr($val, 1, -1);
+        }
+        if (!array_key_exists($key, $_ENV)) {
+            $_ENV[$key] = $val;
+            putenv("$key=$val");
+        }
+    }
+})();
+
 //Set the error reporting
 error_reporting(E_ALL);
 

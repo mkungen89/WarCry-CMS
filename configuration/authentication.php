@@ -5,8 +5,8 @@ if (!defined('init_config'))
 	exit;
 }
 
-$auth_config['DatabaseHost'] = 'localhost';
-$auth_config['DatabaseUser'] = 'root';
-$auth_config['DatabasePass'] = 'ascent';
-$auth_config['DatabaseName'] = 'auth';
-$auth_config['DatabaseEncoding'] = 'utf8';
+$auth_config['DatabaseHost']     = getenv('AUTH_DB_HOST')     ?: 'localhost';
+$auth_config['DatabaseUser']     = getenv('AUTH_DB_USER')     ?: 'root';
+$auth_config['DatabasePass']     = getenv('AUTH_DB_PASS')     ?: '';
+$auth_config['DatabaseName']     = getenv('AUTH_DB_NAME')     ?: 'auth';
+$auth_config['DatabaseEncoding'] = getenv('AUTH_DB_ENCODING') ?: 'utf8';
