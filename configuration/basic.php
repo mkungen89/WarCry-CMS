@@ -5,26 +5,26 @@ if (!defined('init_config'))
 	exit;
 }
 
-$config['SiteName'] = 'warcry';
+$config['SiteName'] = getenv('APP_NAME') ?: 'warcry';
 
-$config['RootPath'] = 'C:\xampp\htdocs\warcry'; 		//(No slash at the end)
-$config['BaseURL'] = 'http://192.168.1.2/warcry'; 	//(No slash at the end)
+$config['RootPath'] = dirname(__DIR__);              //(No slash at the end)
+$config['BaseURL']  = rtrim(getenv('APP_URL') ?: 'http://localhost', '/'); //(No slash at the end)
 
 //Must be unique for each website
-$config['AuthCookieName'] = 'Project-Reborn';
+$config['AuthCookieName'] = getenv('APP_COOKIE_NAME') ?: 'Project-Reborn';
 
 //Minifier Settings
 //StyleFolderURL rewrites the URLs for the image in the CSS files
-$config['StyleFolderURL'] = '/warcry/template/style/'; //(With slash at the end)
+$config['StyleFolderURL'] = '/template/style/'; //(With slash at the end)
 
 //E-mail Address
-$config['Email'] = 'info@192.168.1.2';
+$config['Email'] = getenv('APP_EMAIL') ?: 'info@localhost';
 
 //Time settings
-$config['TimeZone'] = 'Europe/Berlin';
-$config['TimeZoneOffset'] = '+1';
+$config['TimeZone']       = getenv('APP_TIMEZONE') ?: 'Europe/Berlin';
+$config['TimeZoneOffset'] = getenv('APP_TIMEZONE_OFFSET') ?: '+1';
 
-//Warcry WoW Database URL
-$config['WoWDB_URL'] = 'http://192.168.1.2';	//(No slash at the end)
+//WoW Database URL (leave empty if not using a game database)
+$config['WoWDB_URL'] = getenv('WOWDB_URL') ?: '';  //(No slash at the end)
 //Complete URL to the power.js
-$config['WoWDB_JS'] = 'http://192.168.1.2/power.js';
+$config['WoWDB_JS']  = getenv('WOWDB_JS') ?: '';

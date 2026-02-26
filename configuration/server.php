@@ -10,21 +10,21 @@ $server_config['CORE'] = 'trinity';
 
 //Realms configuration
 $realms_config[1] = array(
-	'name' 			=> 'TEST SERVER', 
-	'descr' 		=> 'Blizzlike', 	
+	'name' 			=> getenv('REALM1_NAME')         ?: 'Realm 1',
+	'descr' 		=> getenv('REALM1_DESCR')        ?: 'Blizzlike',
 	'Database' 		=> array(
-		'host' 		=> '192.168.1.2', 
-		'name' 		=> 'characters', 		
-		'user' 		=> 'root', 
-		'pass' 		=> 'ascent', 
+		'host' 		=> getenv('REALM1_DB_HOST')      ?: 'localhost',
+		'name' 		=> getenv('REALM1_DB_NAME')      ?: 'characters',
+		'user' 		=> getenv('REALM1_DB_USER')      ?: 'root',
+		'pass' 		=> getenv('REALM1_DB_PASS')      ?: '',
 		'encoding' 	=> 'utf8'
-	), 
-	'address' 		=> '127.0.0.1',
-	'port' 			=> '8085',
-	'soap_protocol' => 'http',
-	'soap_address'  => '127.0.0.1',
-	'soap_port'     => '7878',
-	'soap_user'     => 'Keithus',
-	'soap_pass'     => 'wattzhammer',
+	),
+	'address' 		=> getenv('REALM1_ADDRESS')      ?: '127.0.0.1',
+	'port' 			=> getenv('REALM1_PORT')         ?: '8085',
+	'soap_protocol' => getenv('REALM1_SOAP_PROTOCOL') ?: 'http',
+	'soap_address'  => getenv('REALM1_SOAP_ADDRESS')  ?: '127.0.0.1',
+	'soap_port'     => getenv('REALM1_SOAP_PORT')     ?: '7878',
+	'soap_user'     => getenv('REALM1_SOAP_USER')     ?: '',
+	'soap_pass'     => getenv('REALM1_SOAP_PASS')     ?: '',
 	'UPDATE_TIME' 	=> '10 minutes',
 );

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:\xampp\htdocs\warcry\engine\core.php';
+require_once __DIR__ . '/core.php';
 
 if (!defined('init_engine'))
 {	
