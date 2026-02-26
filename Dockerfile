@@ -22,6 +22,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Ensure only prefork MPM is active (PHP requires it, event/worker conflict)
+RUN a2dismod mpm_event mpm_worker || true \
+    && a2enmod mpm_prefork
+
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
